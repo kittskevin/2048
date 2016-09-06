@@ -102,18 +102,22 @@ public class Display extends JFrame {
 					}
 				}
 				
+				// 'P' - Run one game using the AI
 				else if (e.getKeyCode() == KeyEvent.VK_P){
 					runAI();
 				}
 				
+				// 'O' - Make one game move using the AI
 				else if (e.getKeyCode() == KeyEvent.VK_O){
 					makeMove();
 				}
 				
+				// 'N' - Reset the board and score
 				else if (e.getKeyCode() == KeyEvent.VK_N) {
 					setUpNewGame();
 				}
 				
+				// 'T' - Run 1000 games using the AI
 				else if (e.getKeyCode() == KeyEvent.VK_T){
 					testMultiple(1000);
 				}
