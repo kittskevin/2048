@@ -69,6 +69,8 @@ public class Display extends JFrame {
 		this.addKeyListener(new KeyListener(){
 
 			public void keyPressed(KeyEvent e) {
+				
+				// Game moves: left, right, up, and down
 				if (e.getKeyCode() == KeyEvent.VK_UP){
 					System.out.println("Up");
 					if (currentGame.move(Direction.UP) && !currentGame.getTerminated()){
@@ -76,24 +78,21 @@ public class Display extends JFrame {
 						updateDisplay();
 						
 					}
-				}
-				else if (e.getKeyCode() == KeyEvent.VK_DOWN){
+				} else if (e.getKeyCode() == KeyEvent.VK_DOWN){
 					System.out.println("Down");
 					if (currentGame.move(Direction.DOWN) && !currentGame.getTerminated()){
 						currentGame.spawnTile();
 						updateDisplay();
 						
 					}
-				}
-				else if (e.getKeyCode() == KeyEvent.VK_LEFT){
+				} else if (e.getKeyCode() == KeyEvent.VK_LEFT){
 					System.out.println("Left");
 					if (currentGame.move(Direction.LEFT) && !currentGame.getTerminated()){
 						currentGame.spawnTile();
 						updateDisplay();
 						
 					}
-				}
-				else if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+				} else if (e.getKeyCode() == KeyEvent.VK_RIGHT){
 					System.out.println("Right");
 					if (currentGame.move(Direction.RIGHT) && !currentGame.getTerminated()){
 						currentGame.spawnTile();
@@ -132,7 +131,6 @@ public class Display extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
 				// No effect
-				
 			}
 			
 		});

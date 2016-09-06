@@ -1,12 +1,9 @@
 package twentyFourtyEight;
 
 import java.awt.Point;
-import java.lang.reflect.Array;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
-
-
 
 public class Game {
 	
@@ -21,11 +18,8 @@ public class Game {
 	private final int gameNumber;
 	
 	public Game(){
-		
-		
 		gameNumber = counter;
 		counter++;
-		
 		
 		vals = new int[4][4];
 		for (int i = 0; i < vals.length; i++){
@@ -39,7 +33,6 @@ public class Game {
 		terminated = false;
 		
 		startTime = new Time(System.currentTimeMillis());
-		
 	}
 	
 	public void spawnTile(){
@@ -61,8 +54,6 @@ public class Game {
 		}
 		Point target = possibles.get(r.nextInt(possibles.size()));
 		vals[target.x][target.y] = val;
-		
-		
 	}
 	
 	public int getHighest(){
@@ -77,7 +68,6 @@ public class Game {
 		return vals;
 	}
 	
-	
 	public int getScore() {
 		return score;
 	}
@@ -88,7 +78,6 @@ public class Game {
 	
 	public Time markFinalTime() {
 		totalTime = new Time(System.currentTimeMillis() - startTime.getTime());
-		
 		return totalTime;
 	}
 	
@@ -146,9 +135,7 @@ public class Game {
                     vals[i][j]=0;
                 }
             }
-        }
-        
-        
+        } 
         score+=points;
         
         if(direction==Direction.UP) {
@@ -190,12 +177,9 @@ public class Game {
 				best = direction;
 				bestValue = heuristic(checkMove(vals, direction)) + checkMoveScore(direction);
 			}
-		
 			
 //			System.out.println(direction.toString() + heuristic(checkMove(vals, direction)));
-			
-			
-			
+	
 		}
 		
 		return best;
@@ -301,11 +285,8 @@ public class Game {
 		}
 		
 		return sum/10;
-		
-		
-		
-	}
 
+	}
 
 	public int heuristic(int[][] gameState){
 		
@@ -324,10 +305,7 @@ public class Game {
 		
 //		return (int) (smoothnessTwo(gameState)*1.2 + smoothness(gameState)  + cornerWeight(gameState)*1.3); // 17195 with 3000*
 		
-		
-		
-		
-		
+
 		value = (int) (smoothnessTwo(gameState)*1.2 + smoothness(gameState)*1 + cornerWeight(gameState)*1.6); // 18500 with 3000*
 		
 //		if (forceDownMove(gameState))
@@ -338,9 +316,7 @@ public class Game {
 //		return smoothnessTwo(gameState)*10 + monotonicWeight(gameState); // 9312 with 3000*
 
 //		return monotonicWeight(gameState); // 4068
-		
-		
-		
+			
 	}
 	
 	
@@ -386,7 +362,6 @@ public class Game {
 		}
 		
 		return total*10;
-		
 	}
 	
 	public int monotonicWeight(int[][] gameState){
@@ -407,10 +382,7 @@ public class Game {
 					rowTotal += gameState[i][j];
 				}
 				total+= rowTotal;
-			}
-				
-			
-			
+			}	
 		}
 		
 		for(int i = 0; i < gameState.length; i++) {
@@ -430,11 +402,7 @@ public class Game {
 				}
 				total+= rowTotal;
 			}
-				
-			
 		}
-		
-		
 		return total * 50;
 	}
 	
@@ -601,7 +569,6 @@ public class Game {
             }
         }
         
-        
         if(direction==Direction.UP) {
         	newState = rotateRight(newState);
         }
@@ -614,7 +581,6 @@ public class Game {
         }
         
         return newState;
-        
     }
 	
 	public int checkMoveScore(Direction direction) {    
@@ -675,7 +641,6 @@ public class Game {
         }
         
         return points;
-        
     }
 	
 	 private int[][] rotateLeft(int[][] board) {
@@ -690,7 +655,6 @@ public class Game {
 	        return rotatedBoard;
 	    }
 	    
-	 
 	    private int[][] rotateRight(int[][] board) {
 	        int[][] rotatedBoard = new int[4][4];
 	        
@@ -719,11 +683,7 @@ public class Game {
 		}
 		
 		return true;
-		
-		
 	}
-	
-	
 	
 	public void printGameState(){
 		for (int i = 0; i < vals.length; i++){
@@ -762,7 +722,6 @@ public class Game {
 				+ "Time:\t" + Integer.valueOf((int) totalTime.getTime()) + "\t"
 				+ "Highest:\t" + highestBlock; 
 		return "Score: " + Integer.valueOf(score);
-		
 	}
 	
 	public void findMaxBlock(){
@@ -773,7 +732,6 @@ public class Game {
 					highestBlock = vals[i][j];
 			}
 		}
-		
 	}
-	
+
 }
